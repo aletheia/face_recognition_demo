@@ -5,8 +5,8 @@ import numpy as np
 
 # Setting up variables
 
-faces_folder = '../faces'
-faces_test_folder = '../test'
+faces_folder = './faces'
+faces_test_folder = './test'
 
 known_face_encodings = []
 known_face_names = []
@@ -25,11 +25,28 @@ for file in os.listdir(faces_folder):
         known_face_names.append(face_name)
         print('Processing '+file+' found person '+face_name)        
 
+def returnCameraIndexes():
+    # checks the first 10 indexes.
+    index = 0
+    arr = []
+    i = 10
+    while i > 0:
+        cap = cv2.VideoCapture(index)
+        if cap.read()[0]:
+            arr.append(index)
+            cap.release()
+        index += 1
+        i -= 1
+    return arr
+
+
 def face_found(name):
 #    print('Found '+name)
     print('Found ')
 
 # Initialize some variables
+cameras = returnCameraIndexes()
+print('Found cameras: '+str(cameras))
 
 video_capture = cv2.VideoCapture(0)
 
