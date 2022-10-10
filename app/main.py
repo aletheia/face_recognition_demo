@@ -42,7 +42,7 @@ def returnCameraIndexes():
 
 def face_found(name):
 #    print('Found '+name)
-    print('Found ')
+    print(f'Found {name}')
 
 # Initialize some variables
 cameras = returnCameraIndexes()
